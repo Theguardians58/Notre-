@@ -9,7 +9,7 @@
     "lint": "next lint"
   },
   "dependencies": {
-    "@excalidraw/excalidraw": "^0.17.3",
+    "@excalidraw/excalidraw": "^0.18.0",
     "@headlessui/react": "^2.2.0",
     "@heroicons/react": "^2.2.0",
     "@tiptap/core": "^2.1.13",
