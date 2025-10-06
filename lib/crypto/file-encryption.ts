@@ -111,7 +111,9 @@ export async function encryptFiles(
   const encryptedFiles: EncryptedFile[] = [];
 
   for (let i = 0; i < files.length; i++) {
-    const encryptedFile = await encryptFile(files[i], encryptionKey);
+    const file = files[i];
+    if (!file) continue;
+    const encryptedFile = await encryptFile(file, encryptionKey);
     encryptedFiles.push(encryptedFile);
 
     if (onProgress) {
