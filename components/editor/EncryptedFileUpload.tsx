@@ -4,7 +4,7 @@ import { useState, useRef } from 'react';
 import { encryptFile, formatFileSize, validateFile } from '@/lib/crypto/file-encryption';
 import { useEncryptionStore } from '@/lib/store/useEncryptionStore';
 import { uploadFile } from '@/lib/firebase/storage';
-import Button from '@/components/ui/Button';
+import { Button } from '@/components/ui/Button';
 import { 
   ArrowUpTrayIcon, 
   DocumentIcon, 
