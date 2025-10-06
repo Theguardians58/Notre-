@@ -25,6 +25,16 @@ export const uploadImage = async (
 };
 
 export const uploadFile = async (
+  file: File | Blob,
+  path: string
+): Promise<string> => {
+  const storageRef = ref(storage, path);
+  await uploadBytes(storageRef, file);
+  return await getDownloadURL(storageRef);
+};
+
+// Legacy function for backward compatibility
+export const uploadUserFile = async (
   userId: string,
   file: File,
   noteId?: string
@@ -35,9 +45,7 @@ export const uploadFile = async (
     ? `users/${userId}/notes/${noteId}/files/${fileName}`
     : `users/${userId}/files/${fileName}`;
 
-  const storageRef = ref(storage, path);
-  await uploadBytes(storageRef, file);
-  return await getDownloadURL(storageRef);
+  return uploadFile(file, path);
 };
 
 export const deleteFile = async (fileUrl: string): Promise<void> => {

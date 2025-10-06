@@ -166,13 +166,17 @@ export async function storeBiometricKey(userId: string, encryptionKey: CryptoKey
     // Store in IndexedDB
     const transaction = db.transaction(['biometric-keys'], 'readwrite');
     const store = transaction.objectStore('biometric-keys');
-    
-    await store.put({
+    const request = store.put({
       userId,
       credentialId,
       encryptedKey: Array.from(new Uint8Array(encryptedKey)),
       iv: Array.from(iv),
       timestamp: Date.now(),
+    });
+
+    await new Promise<void>((resolve, reject) => {
+      request.onsuccess = () => resolve();
+      request.onerror = () => reject(request.error);
     });
 
     return true;
@@ -199,7 +203,12 @@ export async function retrieveBiometricKey(userId: string, credentialId: string)
     // Retrieve encrypted key
     const transaction = db.transaction(['biometric-keys'], 'readonly');
     const store = transaction.objectStore('biometric-keys');
-    const data = await store.get(userId);
+    const request = store.get(userId);
+    
+    const data = await new Promise<any>((resolve, reject) => {
+      request.onsuccess = () => resolve(request.result);
+      request.onerror = () => reject(request.error);
+    });
 
     if (!data) {
       return null;
@@ -240,7 +249,13 @@ export async function removeBiometricKey(userId: string): Promise<boolean> {
     const db = await openBiometricDB();
     const transaction = db.transaction(['biometric-keys'], 'readwrite');
     const store = transaction.objectStore('biometric-keys');
-    await store.delete(userId);
+    const request = store.delete(userId);
+    
+    await new Promise<void>((resolve, reject) => {
+      request.onsuccess = () => resolve();
+      request.onerror = () => reject(request.error);
+    });
+    
     return true;
   } catch (error) {
     console.error('Failed to remove biometric key:', error);
@@ -305,7 +320,13 @@ export async function hasBiometricEnabled(userId: string): Promise<boolean> {
     const db = await openBiometricDB();
     const transaction = db.transaction(['biometric-keys'], 'readonly');
     const store = transaction.objectStore('biometric-keys');
-    const data = await store.get(userId);
+    const request = store.get(userId);
+    
+    const data = await new Promise<any>((resolve, reject) => {
+      request.onsuccess = () => resolve(request.result);
+      request.onerror = () => reject(request.error);
+    });
+    
     return !!data;
   } catch (error) {
     return false;

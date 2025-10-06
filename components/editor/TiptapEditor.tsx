@@ -45,7 +45,7 @@ export const TiptapEditor: FC<TiptapEditorProps> = ({
         nested: true,
       }),
       CodeBlockLowlight.configure({
-        lowlight,
+        lowlight: createLowlight(common),
       }),
       SlashCommands,
     ],

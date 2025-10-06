@@ -95,7 +95,7 @@ export const EncryptionSetup: FC<EncryptionSetupProps> = ({ isOpen, onComplete }
   };
 
   const handleSkip = () => {
-    toast.info('You can enable encryption later in Settings');
+    toast('You can enable encryption later in Settings');
     onComplete();
   };
 

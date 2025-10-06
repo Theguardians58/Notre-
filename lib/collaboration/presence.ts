@@ -41,7 +41,7 @@ const PRESENCE_TIMEOUT = 30000; // 30 seconds
  * Generate a consistent color for a user
  */
 export function getUserColor(userId: string): string {
-  const colors = [
+  const colors: string[] = [
     '#ef4444', // red
     '#f59e0b', // amber
     '#10b981', // green
@@ -58,7 +58,8 @@ export function getUserColor(userId: string): string {
     hash = userId.charCodeAt(i) + ((hash << 5) - hash);
   }
   
-  return colors[Math.abs(hash) % colors.length];
+  const colorIndex = Math.abs(hash) % colors.length;
+  return colors[colorIndex]!;
 }
 
 /**

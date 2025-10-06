@@ -4,7 +4,7 @@ import { useState } from 'react';
 import { retrieveBiometricKey } from '@/lib/crypto/biometric';
 import { useEncryptionStore } from '@/lib/store/useEncryptionStore';
 import { useAuthStore } from '@/lib/store/useAuthStore';
-import Button from '@/components/ui/Button';
+import { Button } from '@/components/ui/Button';
 import { FingerPrintIcon, FaceSmileIcon } from '@heroicons/react/24/outline';
 
 interface BiometricUnlockProps {
