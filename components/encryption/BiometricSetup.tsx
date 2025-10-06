@@ -9,8 +9,8 @@ import {
 } from '@/lib/crypto/biometric';
 import { useEncryptionStore } from '@/lib/store/useEncryptionStore';
 import { useAuthStore } from '@/lib/store/useAuthStore';
-import Button from '@/components/ui/Button';
-import Modal from '@/components/ui/Modal';
+import { Button } from '@/components/ui/Button';
+import { Modal } from '@/components/ui/Modal';
 import { FingerPrintIcon, FaceSmileIcon, CheckCircleIcon, XCircleIcon } from '@heroicons/react/24/outline';
 
 export default function BiometricSetup() {

@@ -9,7 +9,7 @@ import Image from '@tiptap/extension-image';
 import TaskList from '@tiptap/extension-task-list';
 import TaskItem from '@tiptap/extension-task-item';
 import CodeBlockLowlight from '@tiptap/extension-code-block-lowlight';
-import { lowlight } from 'lowlight';
+import { createLowlight, common } from 'lowlight';
 import { FC, useEffect } from 'react';
 import { EditorToolbar } from './EditorToolbar';
 import { SlashCommands } from './SlashCommands';
@@ -82,5 +82,8 @@ export const TiptapEditor: FC<TiptapEditorProps> = ({
         <EditorContent editor={editor} />
       </div>
     </div>
+  );
+};
+>
   );
 };
