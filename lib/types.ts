@@ -44,6 +44,19 @@ export interface Note {
   backlinks?: string[]; // Notes that link to this one
   encrypted?: boolean; // Flag indicating if content is encrypted
   iv?: string; // Initialization vector for decryption (if encrypted)
+  attachments?: FileAttachment[]; // Encrypted file attachments
+}
+
+export interface FileAttachment {
+  id: string;
+  name: string;
+  url: string; // URL to encrypted file in storage
+  mimeType: string;
+  size: number;
+  encryptedSize: number;
+  encrypted: boolean;
+  iv: number[]; // IV for decryption
+  uploadedAt: Date;
 }
 
 export type DocumentType = 

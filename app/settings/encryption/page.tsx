@@ -10,6 +10,7 @@ import { ThemeToggle } from '@/components/layout/ThemeToggle';
 import { Button } from '@/components/ui/Button';
 import { EncryptionSetup } from '@/components/encryption/EncryptionSetup';
 import { EncryptionStatus } from '@/components/encryption/EncryptionStatus';
+import BiometricSetup from '@/components/encryption/BiometricSetup';
 import { useNotes } from '@/hooks/useNotes';
 import { useTheme } from '@/hooks/useTheme';
 import { useAuthStore } from '@/lib/store/useAuthStore';
@@ -138,6 +139,17 @@ export default function EncryptionSettingsPage() {
                 </div>
               ) : (
                 <>
+                  {/* Biometric Unlock */}
+                  <div className="rounded-lg bg-white p-6 shadow dark:bg-gray-800">
+                    <h3 className="mb-2 text-lg font-semibold text-gray-900 dark:text-white">
+                      Biometric Unlock
+                    </h3>
+                    <p className="mb-4 text-sm text-gray-600 dark:text-gray-400">
+                      Use fingerprint or face recognition to unlock your encrypted notes quickly and securely.
+                    </p>
+                    <BiometricSetup />
+                  </div>
+
                   {/* Encryption Actions */}
                   <div className="rounded-lg bg-white p-6 shadow dark:bg-gray-800">
                     <h3 className="mb-4 text-lg font-semibold text-gray-900 dark:text-white">
