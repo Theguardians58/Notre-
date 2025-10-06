@@ -326,15 +326,22 @@ Use conventional commits:
 
 ## 📝 Roadmap
 
-### Planned Features
-- [ ] Collaborative editing (real-time)
-- [ ] Version history
-- [ ] Export to PDF/Markdown
-- [ ] Kanban boards
-- [ ] Calendar integration
-- [ ] Mobile apps (React Native)
-- [ ] Browser extensions
-- [ ] Advanced permissions
+See the complete roadmap: [**ROADMAP.md**](ROADMAP.md)
+
+### 🎯 Coming Soon (v2.2 - Q4 2025)
+- [ ] **Real-time Collaboration** - Work together on notes
+- [ ] **Sharing & Permissions** - Share with view/edit access
+- [ ] **Version History** - Track and restore changes
+- [ ] **Export to PDF/Markdown** - Save notes in any format
+- [ ] **Comments & Annotations** - Discuss and annotate
+
+### 🚀 Future Releases
+- **v2.3 (Q1 2026)**: Advanced search, tags, Kanban boards
+- **v3.0 (Q2 2026)**: Mobile apps, browser extensions, API
+- **v3.1 (Q3 2026)**: Team workspaces, enterprise features
+- **v4.0 (Q4 2026)**: AI enhancement, knowledge graph
+
+[**View Full Roadmap →**](ROADMAP.md)
 
 ---
 
