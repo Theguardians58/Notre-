@@ -6,7 +6,19 @@ import { Sidebar } from '@/components/layout/Sidebar';
 import { SearchModal } from '@/components/layout/SearchModal';
 import { ThemeToggle } from '@/components/layout/ThemeToggle';
 import { Button } from '@/components/ui/Button';
-import GraphView from '@/components/graph/GraphView';
+import dynamic from 'next/dynamic';
+
+const GraphView = dynamic(() => import('@/components/graph/GraphView'), {
+  ssr: false,
+  loading: () => (
+    <div className="flex h-full items-center justify-center">
+      <div className="text-center">
+        <div className="animate-spin h-8 w-8 border-4 border-blue-500 border-t-transparent rounded-full mx-auto mb-4" />
+        <p className="text-gray-600 dark:text-gray-400">Loading graph...</p>
+      </div>
+    </div>
+  ),
+});
 import { useNotes } from '@/hooks/useNotes';
 import { useTheme } from '@/hooks/useTheme';
 import { useAuthStore } from '@/lib/store/useAuthStore';

@@ -135,7 +135,9 @@ export async function decryptFiles(
   const decryptedFiles: File[] = [];
 
   for (let i = 0; i < encryptedFiles.length; i++) {
-    const { blob, metadata } = encryptedFiles[i];
+    const item = encryptedFiles[i];
+    if (!item) continue;
+    const { blob, metadata } = item;
     const decryptedFile = await decryptFile(blob, metadata, encryptionKey);
     decryptedFiles.push(decryptedFile);
 
@@ -199,7 +201,7 @@ export async function encryptLargeFile(
       mimeType: file.type,
       size: file.size,
       encryptedSize: totalSize,
-      iv,
+      iv: Array.from(iv),
       timestamp: Date.now(),
     };
 
