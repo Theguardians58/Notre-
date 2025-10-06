@@ -78,7 +78,7 @@ export const encrypt = async (
 
   // Convert to base64 for storage
   const ciphertext = arrayBufferToBase64(encryptedBuffer);
-  const ivBase64 = arrayBufferToBase64(iv);
+  const ivBase64 = arrayBufferToBase64(new Uint8Array(iv).buffer as ArrayBuffer);
 
   return { ciphertext, iv: ivBase64 };
 };
