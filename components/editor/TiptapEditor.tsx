@@ -84,6 +84,3 @@ export const TiptapEditor: FC<TiptapEditorProps> = ({
     </div>
   );
 };
->
-  );
-};
