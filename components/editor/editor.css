@@ -1,0 +1,70 @@
+/* Editor styles */
+
+/* Placeholder */
+.tiptap p.is-editor-empty:first-child::before {
+  color: #adb5bd;
+  content: attr(data-placeholder);
+  float: left;
+  height: 0;
+  pointer-events: none;
+}
+
+/* Task list styles */
+.tiptap ul[data-type='taskList'] {
+  list-style: none;
+  padding: 0;
+}
+
+.tiptap ul[data-type='taskList'] li {
+  display: flex;
+  align-items: flex-start;
+}
+
+.tiptap ul[data-type='taskList'] li > label {
+  flex: 0 0 auto;
+  margin-right: 0.5rem;
+  user-select: none;
+}
+
+.tiptap ul[data-type='taskList'] li > div {
+  flex: 1 1 auto;
+}
+
+/* Code block styles */
+.tiptap pre {
+  background: #1e1e1e;
+  border-radius: 0.5rem;
+  color: #fff;
+  font-family: 'JetBrainsMono', monospace;
+  padding: 0.75rem 1rem;
+}
+
+.tiptap pre code {
+  background: none;
+  color: inherit;
+  font-size: 0.875rem;
+  padding: 0;
+}
+
+/* Link styles */
+.tiptap a {
+  color: #3b82f6;
+  cursor: pointer;
+  text-decoration: underline;
+}
+
+.tiptap a:hover {
+  color: #2563eb;
+}
+
+/* Image styles */
+.tiptap img {
+  border-radius: 0.5rem;
+  height: auto;
+  max-width: 100%;
+}
+
+/* Selection styles */
+.tiptap .ProseMirror-selectednode {
+  outline: 2px solid #3b82f6;
+}
