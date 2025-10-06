@@ -204,7 +204,7 @@ const base64ToArrayBuffer = (base64: string): ArrayBuffer => {
  * Convert Uint8Array to base64 for storage
  */
 export const saltToBase64 = (salt: Uint8Array): string => {
-  return arrayBufferToBase64(salt.buffer);
+  return arrayBufferToBase64(salt.buffer as ArrayBuffer);
 };
 
 /**

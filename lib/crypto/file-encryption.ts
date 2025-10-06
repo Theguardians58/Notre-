@@ -49,7 +49,7 @@ export async function encryptFile(
       mimeType: file.type,
       size: file.size,
       encryptedSize: encryptedData.byteLength,
-      iv,
+      iv: Array.from(iv),
       timestamp: Date.now(),
     };
 
