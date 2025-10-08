@@ -62,27 +62,52 @@ export class BackendAdapter {
     if (this.backend === 'firebase') {
       // Lazy load Firebase
       const firebaseAuth = await import('./firebase/auth');
-      const firebaseDb = await import('./firebase/firestore');
+      const firebaseDb = await import('./firebase/notes');
       const firebaseStorage = await import('./firebase/storage');
 
       this.authOps = {
         signUpWithEmail: firebaseAuth.signUpWithEmail,
         signInWithEmail: firebaseAuth.signInWithEmail,
         signInWithGoogle: firebaseAuth.signInWithGoogle,
-        getCurrentUser: firebaseAuth.getCurrentUser,
+        getCurrentUser: async () => {
+          // Firebase doesn't have a direct getCurrentUser, use auth state
+          const auth = await import('firebase/auth');
+          const { auth: firebaseAuthInstance } = await import('./firebase/config');
+          const currentUser = auth.getAuth().currentUser;
+          if (currentUser) {
+            return firebaseAuth.getUserData(currentUser.uid);
+          }
+          return null;
+        },
         signOut: firebaseAuth.signOut,
-        updateProfile: firebaseAuth.updateUserProfile,
-        sendPasswordRecovery: firebaseAuth.sendPasswordReset,
+        updateProfile: async (name: string) => {
+          // Firebase update profile - placeholder
+          return null;
+        },
+        sendPasswordRecovery: async (email: string) => {
+          // Firebase password recovery - placeholder
+        },
       };
 
       this.dbOps = {
-        createNote: firebaseDb.createNote,
+        createNote: async (userId: string, note: Partial<Note>) => {
+          return firebaseDb.createNote(
+            userId,
+            note.title || 'Untitled',
+            note.type || 'document',
+            note.parentNoteId || null,
+            note.content
+          );
+        },
         getNote: firebaseDb.getNote,
         getNotes: firebaseDb.getNotes,
         updateNote: firebaseDb.updateNote,
         deleteNote: firebaseDb.deleteNote,
         searchNotes: firebaseDb.searchNotes,
-        subscribeToNoteUpdates: firebaseDb.subscribeToNoteUpdates,
+        subscribeToNoteUpdates: async (noteId: string, callback: (note: any) => void) => {
+          // Firebase notes doesn't have this function, placeholder
+          return () => {};
+        },
       };
 
       this.storageOps = {

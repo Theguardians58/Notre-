@@ -247,19 +247,21 @@ export function subscribeToNotesUpdates(
  * Convert Appwrite document to Note type
  */
 function convertDocumentToNote(document: Models.Document): Note {
+  const doc = document as any;
   return {
     id: document.$id,
-    title: document.title,
-    content: document.content,
-    type: document.type,
-    ownerId: document.ownerId,
-    parentNoteId: document.parentNoteId,
-    emoji: document.emoji,
-    encrypted: document.encrypted || false,
-    iv: document.iv,
-    tags: document.tags || [],
-    attachments: document.attachments || [],
-    createdAt: new Date(document.createdAt),
-    updatedAt: new Date(document.updatedAt),
+    title: doc.title,
+    content: doc.content,
+    type: doc.type,
+    ownerId: doc.ownerId,
+    parentNoteId: doc.parentNoteId,
+    emoji: doc.emoji,
+    encrypted: doc.encrypted || false,
+    iv: doc.iv,
+    tags: doc.tags || [],
+    attachments: doc.attachments || [],
+    isPublic: doc.isPublic || false,
+    createdAt: new Date(document.$createdAt),
+    updatedAt: new Date(document.$updatedAt),
   };
 }

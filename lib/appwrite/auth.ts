@@ -173,7 +173,7 @@ export async function completePasswordRecovery(
   password: string
 ): Promise<void> {
   try {
-    await account.updateRecovery(userId, secret, password, password);
+    await account.updateRecovery(userId, secret, password);
   } catch (error: any) {
     console.error('Appwrite complete recovery error:', error);
     throw new Error(error.message || 'Failed to reset password');

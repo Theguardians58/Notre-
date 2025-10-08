@@ -18,10 +18,15 @@ export async function uploadFile(
     // Create file ID from path or generate unique
     const fileId = path ? path.replace(/[^a-zA-Z0-9._-]/g, '_') : ID.unique();
 
+    // Convert Blob to File if needed
+    const fileToUpload = file instanceof File 
+      ? file 
+      : new File([file], fileId, { type: file.type });
+
     const response = await storage.createFile(
       storageBucketId,
       fileId,
-      file
+      fileToUpload
     );
 
     // Get file URL

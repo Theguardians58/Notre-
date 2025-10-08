@@ -6,6 +6,7 @@ import { MobileHeader } from '@/components/layout/MobileHeader';
 import { Button } from '@/components/ui/Button';
 import GCSSetup from '@/components/storage/GCSSetup';
 import GCSUpload from '@/components/storage/GCSUpload';
+import { useNotes } from '@/hooks/useNotes';
 import { 
   CloudIcon,
   ServerIcon,
@@ -14,16 +15,18 @@ import {
 import Link from 'next/link';
 
 export default function StorageSettingsPage() {
+  const notes = useNotes();
+  
   return (
     <AuthGuard>
       <div className="flex h-screen overflow-hidden bg-gray-50 dark:bg-gray-900">
         {/* Sidebar */}
-        <Sidebar />
+        <Sidebar notes={notes} />
 
         {/* Main Content */}
         <div className="flex-1 flex flex-col overflow-hidden">
           {/* Mobile Header */}
-          <MobileHeader />
+          <MobileHeader notes={notes} />
 
           {/* Content */}
           <main className="flex-1 overflow-y-auto">
