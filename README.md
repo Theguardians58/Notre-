@@ -116,6 +116,17 @@ Choose your AI provider: **Gemini**, **OpenAI (GPT-4)**, or **Claude**
 - **Search** - Instant full-text search
 - **Favorites** - Star important notes
 
+### 📦 Google Cloud Storage Integration
+
+- **Your Own Bucket** - Upload files to your Google Cloud Storage
+- **Full Control** - Complete ownership of your media files
+- **Cost Effective** - Lower costs for large files and high traffic
+- **Global CDN** - Fast delivery worldwide with Google's infrastructure
+- **Advanced Features** - Versioning, lifecycle policies, signed URLs
+- **Privacy** - Your data stays in your GCP project
+- **Easy Setup** - 5-minute configuration in settings
+- **Seamless Integration** - Works alongside Firebase/Appwrite storage
+
 ### 🔄 Dual Backend System
 
 **Choose Your Backend:**
@@ -203,6 +214,7 @@ NEXT_PUBLIC_APPWRITE_STORAGE_BUCKET_ID=cogninote_storage
 - [**Firebase Setup**](firestore.rules) - Complete Firebase configuration
 - [**Appwrite Setup**](APPWRITE_SETUP.md) - Cloud & self-hosted Appwrite guide
 - [**Backend Comparison**](BACKEND_COMPARISON.md) - Choose the right backend
+- [**Google Cloud Storage**](GCS_STORAGE_GUIDE.md) - Upload to your own GCS bucket
 - [**Deployment Guide**](DEPLOYMENT_LIVE_DEMO.md) - Deploy to Vercel/Netlify
 - [**Environment Variables**](.env.example) - All configuration options
 
@@ -250,6 +262,20 @@ NEXT_PUBLIC_APPWRITE_STORAGE_BUCKET_ID=cogninote_storage
 - **Appwrite Auth** - Authentication (email, OAuth)
 - **Appwrite Storage** - File storage with previews
 - **WebSocket** - Real-time updates
+
+### Storage (Your Choice!)
+
+#### Default: Firebase/Appwrite Storage
+- Managed by backend provider
+- Automatic scaling
+- Built-in CDN
+
+#### Optional: Google Cloud Storage
+- **Your Own Bucket** - Complete control
+- **Lower Costs** - GCS pricing ($0.026/GB/month)
+- **Global CDN** - Google's infrastructure
+- **Advanced Features** - Versioning, lifecycle policies
+- **Easy Integration** - 5-minute setup
 
 ### Security
 
@@ -452,11 +478,12 @@ If you find CogniNote useful, please consider giving it a star! ⭐
 
 ## 📊 Project Stats
 
-- **120+ files** of production code
-- **16,500+ lines** of TypeScript/React
-- **27 comprehensive** documentation guides
-- **13 major features** fully implemented
+- **130+ files** of production code
+- **17,500+ lines** of TypeScript/React
+- **28 comprehensive** documentation guides
+- **14 major features** fully implemented
 - **2 backend options** (Firebase & Appwrite)
+- **3 storage options** (Firebase/Appwrite/Google Cloud)
 - **20+ media formats** supported
 - **3 AI providers** integrated
 - **100% production-ready** ✅
@@ -482,6 +509,7 @@ If you find CogniNote useful, please consider giving it a star! ⭐
 - 🏠 **Self-hosting option** - Complete control with Appwrite
 - 🌍 **Data sovereignty** - Choose where your data lives
 - 🔓 **No vendor lock-in** - Export anytime, switch backends freely
+- 📦 **Own your storage** - Upload to your Google Cloud Storage bucket
 
 ---
 
@@ -492,6 +520,7 @@ If you find CogniNote useful, please consider giving it a star! ⭐
 🎬 **Media Rich** - Embed anything from anywhere  
 🤖 **AI Native** - Choose your AI provider  
 🌐 **Open Source Options** - Use Appwrite for full transparency  
+📦 **Own Your Storage** - Upload to your Google Cloud Storage  
 📱 **Fully Responsive** - Works perfectly on any device  
 ⚡ **Modern Tech** - Built with Next.js 15 & React 18  
 🎨 **Beautiful UI** - Clean, professional design  
