@@ -29,7 +29,7 @@ export async function signUpWithEmail(
     );
 
     // Create session
-    await account.createEmailSession(email, password);
+    await account.createEmailPasswordSession(email, password);
 
     return user as AppwriteUser;
   } catch (error: any) {
