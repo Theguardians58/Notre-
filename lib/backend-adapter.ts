@@ -100,10 +100,16 @@ export class BackendAdapter {
           );
         },
         getNote: firebaseDb.getNote,
-        getNotes: firebaseDb.getNotes,
+        getNotes: async (userId: string) => {
+          // TODO: Implement getNotes for Firebase
+          return [];
+        },
         updateNote: firebaseDb.updateNote,
         deleteNote: firebaseDb.deleteNote,
-        searchNotes: firebaseDb.searchNotes,
+        searchNotes: async (userId: string, searchTerm: string) => {
+          // TODO: Implement searchNotes for Firebase
+          return [];
+        },
         subscribeToNoteUpdates: async (noteId: string, callback: (note: any) => void) => {
           // Firebase notes doesn't have this function, placeholder
           return () => {};
