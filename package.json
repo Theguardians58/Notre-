@@ -40,6 +40,7 @@
     "@tiptap/react": "^2.1.13",
     "@tiptap/starter-kit": "^2.1.13",
     "@tiptap/suggestion": "^2.1.13",
+    "appwrite": "^21.0.0",
     "clsx": "^2.1.1",
     "dagre": "^0.8.5",
     "elkjs": "^0.9.3",
