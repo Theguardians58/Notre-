@@ -463,7 +463,7 @@ This project is licensed under the MIT License - see the [LICENSE](LICENSE) file
 
 ### Connect
 - 🌐 Website: Coming soon
-- 📧 Email: support@cogninote.com (coming soon)
+- 📧 Email: cogninote@post.com
 - 🐦 Twitter: [@cogninote](https://twitter.com/cogninote) (coming soon)
 
 ---
