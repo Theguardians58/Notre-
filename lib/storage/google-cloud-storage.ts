@@ -140,7 +140,9 @@ export async function listGCSFiles(
 
     return files.map(file => ({
       name: file.name,
-      size: parseInt(file.metadata.size || '0'),
+      size: typeof file.metadata.size === 'number' 
+        ? file.metadata.size 
+        : parseInt(file.metadata.size || '0'),
       updated: new Date(file.metadata.updated || Date.now()),
     }));
   } catch (error: any) {

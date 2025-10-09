@@ -101,23 +101,75 @@ export class BackendAdapter {
         },
         getNote: firebaseDb.getNote,
         getNotes: async (userId: string) => {
-          // TODO: Implement getNotes for Firebase
-          return [];
+          // Get all notes from Firebase
+          const { collection, query, where, orderBy, getDocs } = await import('firebase/firestore');
+          const { db } = await import('./firebase/config');
+          
+          const notesRef = collection(db, 'notes');
+          const q = query(
+            notesRef,
+            where('ownerId', '==', userId),
+            orderBy('updatedAt', 'desc')
+          );
+          const snapshot = await getDocs(q);
+          return snapshot.docs.map(doc => ({
+            id: doc.id,
+            ...doc.data(),
+          } as Note));
         },
-        updateNote: firebaseDb.updateNote,
+        updateNote: async (noteId: string, updates: Partial<Note>) => {
+          await firebaseDb.updateNote(noteId, updates);
+          // Fetch and return updated note
+          const updatedNote = await firebaseDb.getNote(noteId);
+          if (!updatedNote) {
+            throw new Error('Note not found after update');
+          }
+          return updatedNote;
+        },
         deleteNote: firebaseDb.deleteNote,
         searchNotes: async (userId: string, searchTerm: string) => {
-          // TODO: Implement searchNotes for Firebase
-          return [];
+          // Search notes (client-side filter due to Firestore limitations)
+          const { collection, query, where, getDocs } = await import('firebase/firestore');
+          const { db } = await import('./firebase/config');
+          
+          const notesRef = collection(db, 'notes');
+          const q = query(notesRef, where('ownerId', '==', userId));
+          const snapshot = await getDocs(q);
+          const notes = snapshot.docs.map(doc => ({
+            id: doc.id,
+            ...doc.data(),
+          } as Note));
+          
+          // Filter by search term
+          const lowerSearch = searchTerm.toLowerCase();
+          return notes.filter(note => 
+            note.title?.toLowerCase().includes(lowerSearch) ||
+            JSON.stringify(note.content).toLowerCase().includes(lowerSearch)
+          );
         },
-        subscribeToNoteUpdates: async (noteId: string, callback: (note: any) => void) => {
-          // Firebase notes doesn't have this function, placeholder
-          return () => {};
+        subscribeToNoteUpdates: (noteId: string, callback: (note: Note) => void) => {
+          // Firebase real-time subscription
+          const { doc, onSnapshot } = require('firebase/firestore');
+          const { db } = require('./firebase/config');
+          
+          const noteRef = doc(db, 'notes', noteId);
+          const unsubscribe = onSnapshot(noteRef, (snapshot: any) => {
+            if (snapshot.exists()) {
+              callback({
+                id: snapshot.id,
+                ...snapshot.data(),
+              } as Note);
+            }
+          });
+          
+          return unsubscribe;
         },
       };
 
       this.storageOps = {
-        uploadFile: firebaseStorage.uploadFile,
+        uploadFile: async (file: File | Blob, path?: string) => {
+          return firebaseStorage.uploadFile(file, path || `uploads/${Date.now()}`);
+        },
         uploadImage: firebaseStorage.uploadImage,
         deleteFile: firebaseStorage.deleteFile,
       };

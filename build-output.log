@@ -1,0 +1,28 @@
+
+> cogninote@1.0.0 build
+> next build
+
+   ▲ Next.js 15.3.0-canary.13
+   - Environments: .env.local
+   - Experiments (use with caution):
+     ⨯ useCache
+     ✓ inlineCss
+
+   Creating an optimized production build ...
+ ✓ Compiled successfully
+   Linting and checking validity of types ...
+Failed to compile.
+
+./lib/backend-adapter.ts:107:9
+Type error: Type '(noteId: string, updates: Partial<Omit<Note, "id" | "createdAt" | "ownerId">>) => Promise<void>' is not assignable to type '(noteId: string, updates: Partial<Note>) => Promise<Note>'.
+  Type 'Promise<void>' is not assignable to type 'Promise<Note>'.
+    Type 'void' is not assignable to type 'Note'.
+
+[0m [90m 105 |[39m           [36mreturn[39m [][33m;[39m[0m
+[0m [90m 106 |[39m         }[33m,[39m[0m
+[0m[31m[1m>[22m[39m[90m 107 |[39m         updateNote[33m:[39m firebaseDb[33m.[39mupdateNote[33m,[39m[0m
+[0m [90m     |[39m         [31m[1m^[22m[39m[0m
+[0m [90m 108 |[39m         deleteNote[33m:[39m firebaseDb[33m.[39mdeleteNote[33m,[39m[0m
+[0m [90m 109 |[39m         searchNotes[33m:[39m [36masync[39m (userId[33m:[39m string[33m,[39m searchTerm[33m:[39m string) [33m=>[39m {[0m
+[0m [90m 110 |[39m           [90m// TODO: Implement searchNotes for Firebase[39m[0m
+Next.js build worker exited with code: 1 and signal: null
