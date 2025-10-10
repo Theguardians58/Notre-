@@ -157,7 +157,7 @@ NEXT_PUBLIC_BACKEND=firebase  # or appwrite
 ### Prerequisites
 
 - Node.js 18+ and npm
-- Firebase project OR Appwrite instance
+- Firebase project OR Appwrite instance OR Supabase project
 - (Optional) AI API keys (Gemini, OpenAI, or Claude)
 
 ### Installation
@@ -265,7 +265,7 @@ NEXT_PUBLIC_APPWRITE_STORAGE_BUCKET_ID=cogninote_storage
 
 ### Storage (Your Choice!)
 
-#### Default: Firebase/Appwrite Storage
+#### Default: Firebase/Appwrite/Supabase Storage
 - Managed by backend provider
 - Automatic scaling
 - Built-in CDN
@@ -363,7 +363,7 @@ docker run -p 3000:3000 cogninote
 - [x] Real-time collaboration
 - [x] Visual diagrams (4 types)
 - [x] Media viewer (20+ formats)
-- [x] Dual backend (Firebase + Appwrite)
+- [x] Triple backend (Firebase + Appwrite + Supabase) ⭐
 - [x] Mobile responsive design
 - [x] Dark mode
 - [x] Professional branding
@@ -482,8 +482,8 @@ If you find CogniNote useful, please consider giving it a star! ⭐
 - **17,500+ lines** of TypeScript/React
 - **28 comprehensive** documentation guides
 - **14 major features** fully implemented
-- **2 backend options** (Firebase & Appwrite)
-- **3 storage options** (Firebase/Appwrite/Google Cloud)
+- **3 backend options** (Firebase, Appwrite & Supabase) ⭐
+- **4 storage options** (Firebase/Appwrite/Supabase/GCS)
 - **20+ media formats** supported
 - **3 AI providers** integrated
 - **100% production-ready** ✅
@@ -515,7 +515,7 @@ If you find CogniNote useful, please consider giving it a star! ⭐
 
 ## 🎯 What Makes CogniNote Special?
 
-✨ **Truly Flexible** - Only note app with dual backend support  
+✨ **Truly Flexible** - Only note app with triple backend support (Firebase/Appwrite/Supabase)  
 🔒 **Privacy First** - E2E encryption with biometric unlock  
 🎬 **Media Rich** - Embed anything from anywhere  
 🤖 **AI Native** - Choose your AI provider  

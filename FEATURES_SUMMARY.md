@@ -430,8 +430,8 @@ NEXT_PUBLIC_BACKEND=firebase  # or appwrite
 ## 📊 Statistics
 
 - **14 Major Features** fully implemented
-- **2 Backend Options** (Firebase & Appwrite)
-- **3 Storage Options** (Firebase/Appwrite/GCS)
+- **3 Backend Options** (Firebase, Appwrite & Supabase) ⭐
+- **4 Storage Options** (Firebase/Appwrite/Supabase/GCS)
 - **4 Diagram Types** (Flowcharts, Mindmaps, Whiteboards, Mermaid)
 - **20+ Media Formats** supported
 - **3 AI Providers** integrated

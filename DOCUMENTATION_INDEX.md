@@ -67,15 +67,17 @@
 
 ## 📊 Documentation by Category
 
-### Setup & Configuration (8 guides)
+### Setup & Configuration (10 guides)
 1. Quick Start
 2. Setup Checklist
-3. Appwrite Setup
-4. Backend Comparison
-5. GCS Storage Guide
-6. Environment Variables
-7. Firebase Rules
-8. Storage Rules
+3. Firebase Setup
+4. Appwrite Setup
+5. Supabase Setup ⭐ NEW
+6. Backend Comparison (all 3)
+7. GCS Storage Guide
+8. Environment Variables
+9. Firebase Rules
+10. Storage Rules
 
 ### Features & Usage (8 guides)
 1. Features Summary
@@ -282,3 +284,4 @@ This index is maintained as features are added. Last updated: October 2025
 ---
 
 **Total**: 29 comprehensive guides covering every aspect of CogniNote! 🎉
+uides covering every aspect of CogniNote! 🎉
