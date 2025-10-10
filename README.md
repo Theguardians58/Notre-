@@ -8,7 +8,7 @@
 [![Appwrite](https://img.shields.io/badge/Appwrite-1.5-f02e65?style=flat&logo=appwrite)](https://appwrite.io/)
 [![License](https://img.shields.io/badge/License-MIT-green.svg)](LICENSE)
 
-> A modern, feature-rich note-taking application inspired by Notion and Obsidian, built with Next.js 15, React 18, and your choice of Firebase or Appwrite backend.
+> A modern, feature-rich note-taking application inspired by Notion and Obsidian, built with Next.js 15, React 18, and your choice of Firebase, Appwrite, or Supabase backend.
 
 [**Live Demo**](#deployment) · [**Documentation**](#documentation) · [**Features**](#features) · [**Quick Start**](#quick-start)
 
@@ -147,7 +147,7 @@ Choose your AI provider: **Gemini**, **OpenAI (GPT-4)**, or **Claude**
 **Switch with ONE environment variable!**
 
 ```env
-NEXT_PUBLIC_BACKEND=firebase  # or appwrite
+NEXT_PUBLIC_BACKEND=firebase  # or appwrite or supabase
 ```
 
 ---
@@ -519,8 +519,10 @@ If you find CogniNote useful, please consider giving it a star! ⭐
 🔒 **Privacy First** - E2E encryption with biometric unlock  
 🎬 **Media Rich** - Embed anything from anywhere  
 🤖 **AI Native** - Choose your AI provider  
-🌐 **Open Source Options** - Use Appwrite for full transparency  
+🌐 **Open Source Options** - Appwrite or Supabase for full transparency  
 📦 **Own Your Storage** - Upload to your Google Cloud Storage  
+🐘 **PostgreSQL Power** - Full SQL support with Supabase ⭐  
+🆓 **Generous Free Tiers** - All backends offer free plans  
 📱 **Fully Responsive** - Works perfectly on any device  
 ⚡ **Modern Tech** - Built with Next.js 15 & React 18  
 🎨 **Beautiful UI** - Clean, professional design  
