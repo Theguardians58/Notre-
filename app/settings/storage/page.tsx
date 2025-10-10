@@ -6,6 +6,9 @@ import { MobileHeader } from '@/components/layout/MobileHeader';
 import { Button } from '@/components/ui/Button';
 import GCSSetup from '@/components/storage/GCSSetup';
 import GCSUpload from '@/components/storage/GCSUpload';
+import GoogleDriveSetup from '@/components/storage/GoogleDriveSetup';
+import GoogleDriveUpload from '@/components/storage/GoogleDriveUpload';
+import GoogleDriveFilePicker from '@/components/storage/GoogleDriveFilePicker';
 import { useNotes } from '@/hooks/useNotes';
 import { 
   CloudIcon,
@@ -13,9 +16,11 @@ import {
   ArrowLeftIcon 
 } from '@heroicons/react/24/outline';
 import Link from 'next/link';
+import { useState } from 'react';
 
 export default function StorageSettingsPage() {
   const notes = useNotes();
+  const [selectedDriveFile, setSelectedDriveFile] = useState<any>(null);
   
   return (
     <AuthGuard>
@@ -91,33 +96,70 @@ export default function StorageSettingsPage() {
                   />
                 </div>
 
-                {/* Benefits */}
+                {/* Google Drive Storage */}
+                <div className="bg-white dark:bg-gray-800 rounded-lg border border-gray-200 dark:border-gray-700 p-6">
+                  <GoogleDriveSetup />
+                </div>
+
+                {/* Google Drive Upload Test */}
+                <div className="bg-white dark:bg-gray-800 rounded-lg border border-gray-200 dark:border-gray-700 p-6">
+                  <h3 className="text-lg font-semibold text-gray-900 dark:text-white mb-4">
+                    Upload to Google Drive
+                  </h3>
+                  <GoogleDriveUpload
+                    onUploadComplete={(fileId, fileName, mimeType) => {
+                      console.log('Uploaded to Drive:', fileId, fileName, mimeType);
+                    }}
+                    acceptedTypes="image/*,video/*,audio/*,.pdf"
+                    maxSizeMB={100}
+                  />
+                </div>
+
+                {/* Storage Comparison */}
                 <div className="bg-gradient-to-r from-blue-50 to-purple-50 dark:from-blue-900/20 dark:to-purple-900/20 rounded-lg border border-blue-200 dark:border-blue-800 p-6">
                   <h3 className="text-lg font-semibold text-gray-900 dark:text-white mb-4">
-                    Why use Google Cloud Storage?
+                    Compare Storage Options
                   </h3>
-                  <ul className="space-y-2 text-sm text-gray-700 dark:text-gray-300">
-                    <li className="flex items-start gap-2">
-                      <span className="text-blue-600 dark:text-blue-400">✓</span>
-                      <span>Full control over your media files</span>
-                    </li>
-                    <li className="flex items-start gap-2">
-                      <span className="text-blue-600 dark:text-blue-400">✓</span>
-                      <span>Lower costs for large files</span>
-                    </li>
-                    <li className="flex items-start gap-2">
-                      <span className="text-blue-600 dark:text-blue-400">✓</span>
-                      <span>Faster global delivery with CDN</span>
-                    </li>
-                    <li className="flex items-start gap-2">
-                      <span className="text-blue-600 dark:text-blue-400">✓</span>
-                      <span>Use existing GCP infrastructure</span>
-                    </li>
-                    <li className="flex items-start gap-2">
-                      <span className="text-blue-600 dark:text-blue-400">✓</span>
-                      <span>Advanced access controls and versioning</span>
-                    </li>
-                  </ul>
+                  <div className="grid grid-cols-1 md:grid-cols-3 gap-4 text-sm">
+                    {/* Google Cloud Storage */}
+                    <div>
+                      <h4 className="font-semibold text-gray-900 dark:text-white mb-2">
+                        Google Cloud Storage
+                      </h4>
+                      <ul className="space-y-1 text-gray-700 dark:text-gray-300">
+                        <li>✓ Full control</li>
+                        <li>✓ Lower costs at scale</li>
+                        <li>✓ Global CDN</li>
+                        <li>✓ Advanced features</li>
+                      </ul>
+                    </div>
+
+                    {/* Google Drive */}
+                    <div>
+                      <h4 className="font-semibold text-gray-900 dark:text-white mb-2">
+                        Google Drive ⭐ NEW
+                      </h4>
+                      <ul className="space-y-1 text-gray-700 dark:text-gray-300">
+                        <li>✓ 15 GB free</li>
+                        <li>✓ Easy to use</li>
+                        <li>✓ Sync across devices</li>
+                        <li>✓ File versioning</li>
+                      </ul>
+                    </div>
+
+                    {/* Backend Storage */}
+                    <div>
+                      <h4 className="font-semibold text-gray-900 dark:text-white mb-2">
+                        Backend Storage
+                      </h4>
+                      <ul className="space-y-1 text-gray-700 dark:text-gray-300">
+                        <li>✓ Fully managed</li>
+                        <li>✓ Auto-scaling</li>
+                        <li>✓ Built-in CDN</li>
+                        <li>✓ Easy integration</li>
+                      </ul>
+                    </div>
+                  </div>
                 </div>
               </div>
             </div>
