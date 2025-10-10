@@ -17,6 +17,8 @@ import {
 } from '@heroicons/react/24/outline';
 import Link from 'next/link';
 import { useState } from 'react';
+import toast from 'react-hot-toast';
+import GoogleDrivePlayer from '@/components/media/GoogleDrivePlayer';
 
 export default function StorageSettingsPage() {
   const notes = useNotes();
@@ -82,10 +84,10 @@ export default function StorageSettingsPage() {
                   <GCSSetup />
                 </div>
 
-                {/* Test Upload */}
+                {/* GCS Test Upload */}
                 <div className="bg-white dark:bg-gray-800 rounded-lg border border-gray-200 dark:border-gray-700 p-6">
                   <h3 className="text-lg font-semibold text-gray-900 dark:text-white mb-4">
-                    Test Upload
+                    Test GCS Upload
                   </h3>
                   <GCSUpload
                     onUploadComplete={(url, filename) => {
@@ -95,6 +97,42 @@ export default function StorageSettingsPage() {
                     maxSizeMB={50}
                   />
                 </div>
+
+                {/* Google Drive Integration */}
+                <div className="bg-white dark:bg-gray-800 rounded-lg border border-gray-200 dark:border-gray-700 p-6">
+                  <GoogleDriveSetup />
+                </div>
+
+                {/* Google Drive Upload */}
+                <div className="bg-white dark:bg-gray-800 rounded-lg border border-gray-200 dark:border-gray-700 p-6">
+                  <h3 className="text-lg font-semibold text-gray-900 dark:text-white mb-4">
+                    Upload to Google Drive
+                  </h3>
+                  <GoogleDriveUpload
+                    onUploadComplete={(file) => {
+                      console.log('Uploaded to Google Drive:', file);
+                    }}
+                  />
+                </div>
+
+                {/* Google Drive File Browser */}
+                <div className="bg-white dark:bg-gray-800 rounded-lg border border-gray-200 dark:border-gray-700 p-6">
+                  <GoogleDriveFilePicker
+                    onFileSelect={(file) => {
+                      setSelectedDriveFile(file);
+                    }}
+                  />
+                </div>
+
+                {/* Selected File Player */}
+                {selectedDriveFile && (
+                  <div className="bg-white dark:bg-gray-800 rounded-lg border border-gray-200 dark:border-gray-700 p-6">
+                    <h3 className="text-lg font-semibold text-gray-900 dark:text-white mb-4">
+                      Playing: {selectedDriveFile.name}
+                    </h3>
+                    <GoogleDrivePlayer fileId={selectedDriveFile.id} />
+                  </div>
+                )}
 
                 {/* Google Drive Storage */}
                 <div className="bg-white dark:bg-gray-800 rounded-lg border border-gray-200 dark:border-gray-700 p-6">

@@ -116,16 +116,27 @@ Choose your AI provider: **Gemini**, **OpenAI (GPT-4)**, or **Claude**
 - **Search** - Instant full-text search
 - **Favorites** - Star important notes
 
-### 📦 Google Cloud Storage Integration
+### 📦 Storage Options
 
+**Choose how to store your files:**
+
+#### Google Cloud Storage
 - **Your Own Bucket** - Upload files to your Google Cloud Storage
 - **Full Control** - Complete ownership of your media files
-- **Cost Effective** - Lower costs for large files and high traffic
-- **Global CDN** - Fast delivery worldwide with Google's infrastructure
+- **Cost Effective** - Lower costs for large files ($0.026/GB/month)
+- **Global CDN** - Fast delivery worldwide
 - **Advanced Features** - Versioning, lifecycle policies, signed URLs
-- **Privacy** - Your data stays in your GCP project
-- **Easy Setup** - 5-minute configuration in settings
-- **Seamless Integration** - Works alongside Firebase/Appwrite storage
+- **Easy Setup** - 5-minute configuration
+
+#### Google Drive Integration ⭐ NEW
+- **15 GB Free** - Use your personal Google Drive storage
+- **Direct Streaming** - Play videos and audio from Drive
+- **Access Anywhere** - Files available on all devices
+- **Easy Upload** - Drag & drop to your Drive
+- **Auto Backup** - Google's automatic backup
+- **No Limits** - Use your existing Drive quota
+- **5-Minute Setup** - OAuth configuration
+- **Full Ownership** - Your Drive, your files
 
 ### 🔄 Dual Backend System
 
@@ -483,7 +494,7 @@ If you find CogniNote useful, please consider giving it a star! ⭐
 - **28 comprehensive** documentation guides
 - **14 major features** fully implemented
 - **3 backend options** (Firebase, Appwrite & Supabase) ⭐
-- **4 storage options** (Firebase/Appwrite/Supabase/GCS)
+- **5 storage options** (Backend/GCS/Google Drive) ⭐
 - **20+ media formats** supported
 - **3 AI providers** integrated
 - **100% production-ready** ✅
@@ -520,8 +531,9 @@ If you find CogniNote useful, please consider giving it a star! ⭐
 🎬 **Media Rich** - Embed anything from anywhere  
 🤖 **AI Native** - Choose your AI provider  
 🌐 **Open Source Options** - Appwrite or Supabase for full transparency  
-📦 **Own Your Storage** - Upload to your Google Cloud Storage  
+📦 **Own Your Storage** - Upload to GCS or Google Drive  
 🐘 **PostgreSQL Power** - Full SQL support with Supabase ⭐  
+📁 **Google Drive Integration** - 15 GB free + stream files ⭐ NEW  
 🆓 **Generous Free Tiers** - All backends offer free plans  
 📱 **Fully Responsive** - Works perfectly on any device  
 ⚡ **Modern Tech** - Built with Next.js 15 & React 18  
