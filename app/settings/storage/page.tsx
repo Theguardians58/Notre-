@@ -3,22 +3,20 @@
 import { AuthGuard } from '@/components/auth/AuthGuard';
 import { Sidebar } from '@/components/layout/Sidebar';
 import { MobileHeader } from '@/components/layout/MobileHeader';
-import { Button } from '@/components/ui/Button';
 import GCSSetup from '@/components/storage/GCSSetup';
 import GCSUpload from '@/components/storage/GCSUpload';
 import GoogleDriveSetup from '@/components/storage/GoogleDriveSetup';
 import GoogleDriveUpload from '@/components/storage/GoogleDriveUpload';
 import GoogleDriveFilePicker from '@/components/storage/GoogleDriveFilePicker';
+import GoogleDrivePlayer from '@/components/media/GoogleDrivePlayer';
 import { useNotes } from '@/hooks/useNotes';
 import { 
-  CloudIcon,
   ServerIcon,
   ArrowLeftIcon 
 } from '@heroicons/react/24/outline';
 import Link from 'next/link';
 import { useState } from 'react';
 import toast from 'react-hot-toast';
-import GoogleDrivePlayer from '@/components/media/GoogleDrivePlayer';
 
 export default function StorageSettingsPage() {
   const notes = useNotes();
@@ -52,7 +50,7 @@ export default function StorageSettingsPage() {
                   Storage Settings
                 </h1>
                 <p className="text-gray-600 dark:text-gray-400 mt-2">
-                  Manage your media file storage preferences
+                  Choose where to store your media files
                 </p>
               </div>
 
@@ -64,38 +62,19 @@ export default function StorageSettingsPage() {
                     <ServerIcon className="h-8 w-8 text-gray-600 dark:text-gray-400" />
                     <div>
                       <h3 className="text-lg font-semibold text-gray-900 dark:text-white">
-                        Default Storage
+                        Default Backend Storage
                       </h3>
                       <p className="text-sm text-gray-600 dark:text-gray-400 mt-1">
-                        Files are stored in Firebase Storage or Appwrite Storage (based on your backend)
+                        Files stored in your selected backend (Firebase/Appwrite/Supabase)
                       </p>
                     </div>
                   </div>
 
                   <div className="p-4 bg-blue-50 dark:bg-blue-900/20 rounded-lg">
                     <p className="text-sm text-blue-900 dark:text-blue-300">
-                      ✓ Currently using default storage
+                      ✓ Currently active - No setup required
                     </p>
                   </div>
-                </div>
-
-                {/* Google Cloud Storage */}
-                <div className="bg-white dark:bg-gray-800 rounded-lg border border-gray-200 dark:border-gray-700 p-6">
-                  <GCSSetup />
-                </div>
-
-                {/* GCS Test Upload */}
-                <div className="bg-white dark:bg-gray-800 rounded-lg border border-gray-200 dark:border-gray-700 p-6">
-                  <h3 className="text-lg font-semibold text-gray-900 dark:text-white mb-4">
-                    Test GCS Upload
-                  </h3>
-                  <GCSUpload
-                    onUploadComplete={(url, filename) => {
-                      console.log('Uploaded:', url, filename);
-                    }}
-                    acceptedTypes="image/*,video/*"
-                    maxSizeMB={50}
-                  />
                 </div>
 
                 {/* Google Drive Integration */}
@@ -111,6 +90,7 @@ export default function StorageSettingsPage() {
                   <GoogleDriveUpload
                     onUploadComplete={(file) => {
                       console.log('Uploaded to Google Drive:', file);
+                      toast.success(`${file.name} uploaded successfully!`);
                     }}
                   />
                 </div>
@@ -120,6 +100,7 @@ export default function StorageSettingsPage() {
                   <GoogleDriveFilePicker
                     onFileSelect={(file) => {
                       setSelectedDriveFile(file);
+                      toast.success(`Selected: ${file.name}`);
                     }}
                   />
                 </div>
@@ -128,73 +109,74 @@ export default function StorageSettingsPage() {
                 {selectedDriveFile && (
                   <div className="bg-white dark:bg-gray-800 rounded-lg border border-gray-200 dark:border-gray-700 p-6">
                     <h3 className="text-lg font-semibold text-gray-900 dark:text-white mb-4">
-                      Playing: {selectedDriveFile.name}
+                      Playing from Google Drive
                     </h3>
                     <GoogleDrivePlayer fileId={selectedDriveFile.id} />
                   </div>
                 )}
 
-                {/* Google Drive Storage */}
+                {/* Google Cloud Storage */}
                 <div className="bg-white dark:bg-gray-800 rounded-lg border border-gray-200 dark:border-gray-700 p-6">
-                  <GoogleDriveSetup />
+                  <GCSSetup />
                 </div>
 
-                {/* Google Drive Upload Test */}
+                {/* GCS Test Upload */}
                 <div className="bg-white dark:bg-gray-800 rounded-lg border border-gray-200 dark:border-gray-700 p-6">
                   <h3 className="text-lg font-semibold text-gray-900 dark:text-white mb-4">
-                    Upload to Google Drive
+                    Test GCS Upload
                   </h3>
-                  <GoogleDriveUpload
-                    onUploadComplete={(fileId, fileName, mimeType) => {
-                      console.log('Uploaded to Drive:', fileId, fileName, mimeType);
+                  <GCSUpload
+                    onUploadComplete={(url, filename) => {
+                      console.log('Uploaded to GCS:', url, filename);
+                      toast.success(`${filename} uploaded to GCS!`);
                     }}
-                    acceptedTypes="image/*,video/*,audio/*,.pdf"
-                    maxSizeMB={100}
+                    acceptedTypes="image/*,video/*"
+                    maxSizeMB={50}
                   />
                 </div>
 
                 {/* Storage Comparison */}
                 <div className="bg-gradient-to-r from-blue-50 to-purple-50 dark:from-blue-900/20 dark:to-purple-900/20 rounded-lg border border-blue-200 dark:border-blue-800 p-6">
                   <h3 className="text-lg font-semibold text-gray-900 dark:text-white mb-4">
-                    Compare Storage Options
+                    Storage Options Comparison
                   </h3>
                   <div className="grid grid-cols-1 md:grid-cols-3 gap-4 text-sm">
+                    {/* Google Drive */}
+                    <div className="bg-white dark:bg-gray-800 rounded-lg p-4 border-2 border-blue-500">
+                      <h4 className="font-semibold text-blue-600 dark:text-blue-400 mb-2">
+                        Google Drive ⭐
+                      </h4>
+                      <ul className="space-y-1 text-gray-700 dark:text-gray-300">
+                        <li>✓ 15 GB free</li>
+                        <li>✓ Direct streaming</li>
+                        <li>✓ Access anywhere</li>
+                        <li>✓ Auto backup</li>
+                      </ul>
+                    </div>
+
                     {/* Google Cloud Storage */}
-                    <div>
+                    <div className="bg-white dark:bg-gray-800 rounded-lg p-4">
                       <h4 className="font-semibold text-gray-900 dark:text-white mb-2">
                         Google Cloud Storage
                       </h4>
                       <ul className="space-y-1 text-gray-700 dark:text-gray-300">
                         <li>✓ Full control</li>
-                        <li>✓ Lower costs at scale</li>
+                        <li>✓ Low cost ($0.026/GB)</li>
                         <li>✓ Global CDN</li>
                         <li>✓ Advanced features</li>
                       </ul>
                     </div>
 
-                    {/* Google Drive */}
-                    <div>
-                      <h4 className="font-semibold text-gray-900 dark:text-white mb-2">
-                        Google Drive ⭐ NEW
-                      </h4>
-                      <ul className="space-y-1 text-gray-700 dark:text-gray-300">
-                        <li>✓ 15 GB free</li>
-                        <li>✓ Easy to use</li>
-                        <li>✓ Sync across devices</li>
-                        <li>✓ File versioning</li>
-                      </ul>
-                    </div>
-
                     {/* Backend Storage */}
-                    <div>
+                    <div className="bg-white dark:bg-gray-800 rounded-lg p-4">
                       <h4 className="font-semibold text-gray-900 dark:text-white mb-2">
                         Backend Storage
                       </h4>
                       <ul className="space-y-1 text-gray-700 dark:text-gray-300">
-                        <li>✓ Fully managed</li>
-                        <li>✓ Auto-scaling</li>
+                        <li>✓ Auto-managed</li>
+                        <li>✓ No setup needed</li>
                         <li>✓ Built-in CDN</li>
-                        <li>✓ Easy integration</li>
+                        <li>✓ Simple API</li>
                       </ul>
                     </div>
                   </div>
