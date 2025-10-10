@@ -1,4 +1,4 @@
-# 🔄 Firebase vs Appwrite - Backend Comparison
+# 🔄 Firebase vs Appwrite vs Supabase - Backend Comparison
 
 **Complete comparison to help you choose the right backend for CogniNote**
 
@@ -6,18 +6,20 @@
 
 ## 🎯 Quick Comparison
 
-| Feature | Firebase | Appwrite |
-|---------|----------|----------|
-| **Type** | Proprietary (Google) | Open Source (MIT) |
-| **Hosting** | Cloud Only | Cloud + Self-Hosted |
-| **Database** | Firestore (NoSQL) | MariaDB/MySQL |
-| **Real-time** | Native listeners | WebSocket |
-| **Authentication** | 15+ providers | 30+ providers |
-| **Storage** | Google Cloud Storage | Local/S3 |
-| **Pricing** | Pay-as-you-go | Free (self-hosted) / Cloud pricing |
-| **Scalability** | Unlimited (Google) | Depends on infrastructure |
-| **Setup Time** | 5 minutes | 10-15 minutes |
-| **Lock-in** | High | Low (open source) |
+| Feature | Firebase | Appwrite | Supabase ⭐ |
+|---------|----------|----------|-------------|
+| **Type** | Proprietary (Google) | Open Source (MIT) | Open Source (Apache 2.0) |
+| **Hosting** | Cloud Only | Cloud + Self-Hosted | Cloud + Self-Hosted |
+| **Database** | Firestore (NoSQL) | MariaDB/MySQL | PostgreSQL |
+| **Real-time** | Native listeners | WebSocket | PostgreSQL subscriptions |
+| **Authentication** | 15+ providers | 30+ providers | 15+ providers |
+| **Storage** | Google Cloud Storage | Local/S3 | Local/S3 |
+| **Pricing** | Pay-as-you-go | Free (self-hosted) | Free tier + Pay-as-you-go |
+| **Scalability** | Unlimited (Google) | Depends on infrastructure | Excellent (PostgreSQL) |
+| **Setup Time** | 5 minutes | 10-15 minutes | 5-10 minutes |
+| **Lock-in** | High | Low (open source) | Low (open source) |
+| **SQL Support** | ❌ | Limited | ✅ Full PostgreSQL |
+| **Row Level Security** | ❌ | ❌ | ✅ Native |
 
 ---
 
@@ -242,9 +244,25 @@
 - JWT ✅
 - Total: 30+ providers
 
-**Winner:** Appwrite (more providers) 🏆
+**Winner:** Appwrite (most providers) 🏆
 
 ### Database
+
+**Supabase (PostgreSQL):**
+- SQL relational database
+- Collections and documents (via tables)
+- Real-time subscriptions ✅
+- Complex queries with SQL ✅
+- Joins and relationships ✅
+- Full-text search (built-in) ✅
+- Views and stored procedures ✅
+- No document size limit
+- Row Level Security ✅
+- Best for complex data models
+
+**Winner:** Supabase (SQL power) 🏆
+
+### Database (Original Comparison)
 
 **Firebase (Firestore):**
 - NoSQL document database
@@ -266,9 +284,22 @@
 - No document size limit
 - Better for complex data
 
-**Winner:** Tie (depends on use case) 🤝
+**Winner:** Supabase for complex apps, Firebase for simple 🤝
 
 ### Storage
+
+**Supabase Storage:**
+- Local or S3-compatible storage
+- Built-in image transformations ✅
+- CDN delivery ✅
+- Signed URLs ✅
+- Public/Private buckets ✅
+- No size limits (depends on config)
+- Free tier: 1 GB
+
+**Winner:** Tie - All three are excellent 🤝
+
+### Storage (Original Comparison)
 
 **Firebase Storage:**
 - Google Cloud Storage backend
