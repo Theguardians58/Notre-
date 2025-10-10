@@ -262,7 +262,7 @@ export async function getGoogleDriveFileUrl(fileId: string): Promise<string> {
     console.error('Get file URL error:', error);
     // Fallback to webContentLink
     const file = await getFileDetails(fileId);
-    return file.webContentLink || file.webViewLink;
+    return file.webContentLink || file.webViewLink || '';
   }
 }
 
@@ -281,7 +281,12 @@ function fileToBase64(file: File): Promise<string> {
   return new Promise((resolve, reject) => {
     const reader = new FileReader();
     reader.onload = () => {
-      const base64 = (reader.result as string).split(',')[1];
+      const result = reader.result as string;
+      const base64 = result.split(',')[1];
+      if (!base64) {
+        reject(new Error('Failed to convert file to base64'));
+        return;
+      }
       resolve(base64);
     };
     reader.onerror = reject;
