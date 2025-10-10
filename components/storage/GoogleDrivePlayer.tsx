@@ -12,6 +12,8 @@ import toast from 'react-hot-toast';
 import {
   ArrowDownTrayIcon,
   ArrowTopRightOnSquareIcon,
+  DocumentIcon,
+  MusicalNoteIcon,
 } from '@heroicons/react/24/outline';
 
 interface GoogleDrivePlayerProps {

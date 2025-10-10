@@ -7,7 +7,7 @@ import {
   DriveFile,
   isPlayableMedia,
 } from '@/lib/storage/google-drive';
-import { PlayCircleIcon, ArrowDownTrayIcon } from '@heroicons/react/24/outline';
+import { PlayCircleIcon, ArrowDownTrayIcon, DocumentIcon } from '@heroicons/react/24/outline';
 
 interface GoogleDrivePlayerProps {
   fileId: string;
