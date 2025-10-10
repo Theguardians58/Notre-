@@ -205,6 +205,38 @@ export class BackendAdapter {
         deleteFile: appwriteStorage.deleteFile,
         getFileUrl: appwriteStorage.getFileUrl,
       };
+    } else if (this.backend === 'supabase') {
+      // Lazy load Supabase
+      const supabaseAuth = await import('./supabase/auth');
+      const supabaseDb = await import('./supabase/database');
+      const supabaseStorage = await import('./supabase/storage');
+
+      this.authOps = {
+        signUpWithEmail: supabaseAuth.signUpWithEmail,
+        signInWithEmail: supabaseAuth.signInWithEmail,
+        signInWithGoogle: supabaseAuth.signInWithGoogle,
+        getCurrentUser: supabaseAuth.getCurrentUser,
+        signOut: supabaseAuth.signOut,
+        updateProfile: supabaseAuth.updateProfile,
+        sendPasswordRecovery: supabaseAuth.sendPasswordRecovery,
+      };
+
+      this.dbOps = {
+        createNote: supabaseDb.createNote,
+        getNote: supabaseDb.getNote,
+        getNotes: supabaseDb.getNotes,
+        updateNote: supabaseDb.updateNote,
+        deleteNote: supabaseDb.deleteNote,
+        searchNotes: supabaseDb.searchNotes,
+        subscribeToNoteUpdates: supabaseDb.subscribeToNoteUpdates,
+      };
+
+      this.storageOps = {
+        uploadFile: supabaseStorage.uploadFile,
+        uploadImage: supabaseStorage.uploadImage,
+        deleteFile: supabaseStorage.deleteFile,
+        getFileUrl: supabaseStorage.getFileUrl,
+      };
     }
   }
 
