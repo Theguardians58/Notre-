@@ -23,7 +23,7 @@
 - 🌐 **Graph Visualization** - Interactive force-directed graph of note connections
 - 👥 **Real-Time Collaboration** - Multi-user editing with live presence
 - 📊 **Visual Diagrams** - Flowcharts, mindmaps, whiteboards, and Mermaid
-- 🔄 **Dual Backend** - Choose between Firebase or Appwrite (or switch anytime!)
+- 🔄 **Triple Backend** - Choose Firebase, Appwrite, or Supabase (switch anytime!)
 - 📱 **Fully Responsive** - Optimized for mobile, tablet, and desktop
 - 🌙 **Dark Mode** - Beautiful UI with dark theme support
 
