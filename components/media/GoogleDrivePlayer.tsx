@@ -6,6 +6,7 @@ import {
   getFileDetails,
   DriveFile,
 } from '@/lib/storage/google-drive';
+import { Button } from '@/components/ui/Button';
 import { PlayCircleIcon, ArrowDownTrayIcon, DocumentIcon } from '@heroicons/react/24/outline';
 
 interface GoogleDrivePlayerProps {
