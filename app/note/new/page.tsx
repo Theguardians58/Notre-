@@ -8,14 +8,17 @@ import { saveGuestNote, hasGuestNotes, getGuestNotesCount } from '@/lib/guest-st
 import SavePromptModal from '@/components/SavePromptModal';
 import { Spinner } from '@/components/ui/Spinner';
 
-const TiptapEditor = dynamic(() => import('@/components/editor/TiptapEditor'), {
-  ssr: false,
-  loading: () => (
-    <div className="flex items-center justify-center h-96">
-      <Spinner size="lg" />
-    </div>
-  ),
-});
+const TiptapEditor = dynamic(
+  () => import('@/components/editor/TiptapEditor').then((mod) => mod.default),
+  {
+    ssr: false,
+    loading: () => (
+      <div className="flex items-center justify-center h-96">
+        <Spinner size="lg" />
+      </div>
+    ),
+  }
+);
 
 export default function NewNotePage() {
   const { user, loading: authLoading } = useAuth();
