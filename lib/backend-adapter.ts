@@ -10,7 +10,7 @@ export type BackendType = 'firebase' | 'appwrite';
 
 // Get current backend from environment
 export function getCurrentBackend(): BackendType {
-  const backend = process.env.NEXT_PUBLIC_BACKEND || 'firebase';
+  const backend = process.env.NEXT_PUBLIC_BACKEND || 'supabase';
   return backend as BackendType;
 }
 
