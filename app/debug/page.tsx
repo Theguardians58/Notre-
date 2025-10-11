@@ -94,20 +94,46 @@ export default function DebugPage() {
               <p className="text-sm font-semibold mb-2 text-gray-900 dark:text-white">
                 How to Fix:
               </p>
-              <ol className="text-sm space-y-2 text-gray-700 dark:text-gray-300">
-                <li>1. Go to Netlify: Site settings → Environment variables</li>
-                <li>2. Add the missing variables from Firebase Console</li>
-                <li>3. Trigger a new deploy</li>
-                <li>4. Check this page again</li>
-              </ol>
-              <a
-                href="https://github.com/Theguardians58/Notre-/blob/main/FIX_FIREBASE_API_KEY_ERROR.md"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="inline-block mt-4 text-blue-600 dark:text-blue-400 hover:underline"
-              >
-                📚 Read Complete Fix Guide →
-              </a>
+              {(!config.backend || config.backend === 'supabase') ? (
+                <>
+                  <p className="text-sm mb-3 text-gray-700 dark:text-gray-300">
+                    <strong>Recommended:</strong> Set up Supabase (easiest, only 3 variables!)
+                  </p>
+                  <ol className="text-sm space-y-2 text-gray-700 dark:text-gray-300">
+                    <li>1. Create Supabase project at <a href="https://supabase.com" target="_blank" className="text-blue-600 underline">supabase.com</a></li>
+                    <li>2. Get URL and anon key from Settings → API</li>
+                    <li>3. Add to Netlify: <code className="bg-gray-100 dark:bg-gray-700 px-1 rounded">NEXT_PUBLIC_BACKEND=supabase</code></li>
+                    <li>4. Add: <code className="bg-gray-100 dark:bg-gray-700 px-1 rounded">NEXT_PUBLIC_SUPABASE_URL</code></li>
+                    <li>5. Add: <code className="bg-gray-100 dark:bg-gray-700 px-1 rounded">NEXT_PUBLIC_SUPABASE_ANON_KEY</code></li>
+                    <li>6. Trigger deploy</li>
+                  </ol>
+                  <a
+                    href="https://github.com/Theguardians58/Notre-/blob/main/SUPABASE_QUICK_START.md"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="inline-block mt-4 text-blue-600 dark:text-blue-400 hover:underline"
+                  >
+                    📚 Read Supabase Quick Start (5 min) →
+                  </a>
+                </>
+              ) : (
+                <>
+                  <ol className="text-sm space-y-2 text-gray-700 dark:text-gray-300">
+                    <li>1. Go to Netlify: Site settings → Environment variables</li>
+                    <li>2. Add the missing variables from {config.backend === 'firebase' ? 'Firebase' : 'Appwrite'} Console</li>
+                    <li>3. Trigger a new deploy</li>
+                    <li>4. Check this page again</li>
+                  </ol>
+                  <a
+                    href={`https://github.com/Theguardians58/Notre-/blob/main/${config.backend === 'firebase' ? 'FIX_FIREBASE_API_KEY_ERROR.md' : 'APPWRITE_SETUP.md'}`}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="inline-block mt-4 text-blue-600 dark:text-blue-400 hover:underline"
+                  >
+                    📚 Read Complete Fix Guide →
+                  </a>
+                </>
+              )}
             </div>
           </div>
         )}
