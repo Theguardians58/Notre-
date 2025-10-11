@@ -9,7 +9,7 @@ import SavePromptModal from '@/components/SavePromptModal';
 import { Spinner } from '@/components/ui/Spinner';
 
 const TiptapEditor = dynamic(
-  () => import('@/components/editor/TiptapEditor').then((mod) => mod.default),
+  () => import('@/components/editor/TiptapEditor'),
   {
     ssr: false,
     loading: () => (
