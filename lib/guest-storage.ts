@@ -50,11 +50,20 @@ export function saveGuestNote(note: Partial<Note>): Note {
   if (note.id) {
     const index = notes.findIndex(n => n.id === note.id);
     if (index !== -1) {
-      notes[index] = {
+      const updatedNote: Note = {
         ...notes[index],
         ...note,
+        id: notes[index].id,
+        userId: notes[index].userId,
+        title: note.title ?? notes[index].title,
+        content: note.content ?? notes[index].content,
+        type: note.type ?? notes[index].type,
+        parentNoteId: note.parentNoteId !== undefined ? note.parentNoteId : notes[index].parentNoteId,
+        createdAt: notes[index].createdAt,
         updatedAt: new Date().toISOString(),
-      } as Note;
+        isPublic: note.isPublic ?? notes[index].isPublic,
+      };
+      notes[index] = updatedNote;
       localStorage.setItem(GUEST_NOTES_KEY, JSON.stringify(notes));
       return notes[index];
     }
